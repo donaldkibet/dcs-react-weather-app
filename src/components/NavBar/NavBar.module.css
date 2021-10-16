@@ -1,0 +1,21 @@
+.navBarWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.625rem;
+}
+
+.link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-right: 0.625rem;
+    color: var(--grey-70);
+}
+
+.link > svg {
+    margin: 0 0.625rem;
+}
+
+.rightLinks {
+    display: flex;
+}

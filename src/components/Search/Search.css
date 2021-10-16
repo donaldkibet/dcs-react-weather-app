@@ -1,0 +1,11 @@
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  border: 0.0125rem solid var(--grey-20);
+  padding: 1rem;
+  background-color: var(--grey-10);
+}
+
+.resultPanel {
+  margin-top: 1rem;
+}

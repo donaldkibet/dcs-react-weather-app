@@ -1,0 +1,28 @@
+.temp {
+    font-size: 3rem;
+    color: var(--blue);
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.tempWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.625rem;
+    border: 0.0125rem solid var(--grey-100);
+    margin: 0.625rem;
+    background-color: var(--blue-50);
+    padding: 0;
+    cursor: pointer;
+}
+
+.cardTitle {
+    color: #1565C0
+}

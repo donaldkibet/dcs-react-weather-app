@@ -1,0 +1,80 @@
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weatherDetailsWrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: "Quicksand", sans-serif;
+  justify-content: center;
+  background-color: var(--grey-10);
+  padding: 0.625rem;
+}
+
+.weatherDetailsWrapper > p {
+  margin: 0 0.625rem;
+}
+
+.iconWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.title01 {
+  font-weight: 900;
+  margin-bottom: 0.625rem;
+}
+
+.date {
+  color: var(--grey-500);
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.temp {
+  font-size: 4rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.description {
+  color: var(--grey-500);
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.currentConditionsWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--grey-10);
+  padding: 0.25rem;
+  margin: 0.625rem 0;
+}
+
+.condition {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.condition > span {
+  min-width: 10rem;
+  margin: 0.625rem 0;
+}
+
+.label01 {
+  color: var(--grey-500);
+  font-weight: 800;
+  margin-bottom: 0.125rem;
+}
+
+.label02 {
+  font-weight: 900;
+}

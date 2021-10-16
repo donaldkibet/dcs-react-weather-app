@@ -1,0 +1,7 @@
+.listItem {
+   display: flex;
+   background-color: var(--grey-10);
+   margin: 0.125rem;
+   padding: 0.125rem;
+   justify-content: space-between;
+}

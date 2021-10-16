@@ -1,0 +1,6 @@
+.cityListTitle {
+    font-weight: 900;
+    margin-bottom: 0.625rem;
+    margin: 0.625rem 0;
+    color: var(--grey-70);
+}

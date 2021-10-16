@@ -1,0 +1,39 @@
+
+.weatherInfoWrapper {
+    display: flex;
+    width: 100%;
+}
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0.625rem;
+    justify-content: center;
+}
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.iconWrapper span {
+    margin-left: 0.325rem;
+}
+
+.temp {
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.label01 {
+    font-weight: 100;
+    margin-bottom: 0.125rem;
+    margin: 0.625rem 0rem; 
+    color: var(--grey-500);
+}
+
+.label02 {
+    font-weight: 500;
+}

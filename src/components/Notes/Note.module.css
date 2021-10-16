@@ -1,0 +1,28 @@
+.noteWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    margin: 0 0.625rem;
+}
+
+.listWrapper {
+    border: 0.0125rem solid var(--grey-100);
+    margin: 0;
+    padding: 0.125rem 0.625rem;
+}
+
+.listItem {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.0125rem solid var(--grey-100);
+}
+
+.listItem:hover {
+    background-color: var(--blue-100);
+    cursor: pointer;
+}
