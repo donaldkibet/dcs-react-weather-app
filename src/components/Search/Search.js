@@ -1,5 +1,5 @@
 import { useState } from "react";
-import debounce from "lodash/debounce";
+// import debounce from "lodash/debounce";
 import "./Search.css";
 import { useWeather } from "../../hooks/useWeather";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
@@ -10,7 +10,7 @@ const Search = () => {
   // const handleSearch = debounce((searchTerm) => setSearchTerm(searchTerm), 300);
   const handleSearch = (searchTerm) => setSearchTerm(searchTerm);
 
-  const { data, error } = useWeather(searchTerm);
+  const { data } = useWeather(searchTerm);
 
   return (
     <div className="searchContainer">
