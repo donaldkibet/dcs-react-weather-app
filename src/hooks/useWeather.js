@@ -4,20 +4,27 @@ import fetcher from "../lib/fetcher";
 const apiKey = process.env.REACT_APP_API_KEY;
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-export const useWeather = (cityName) =>
-  useSWR(
+export const useWeather = (cityName, revalidateOnMount = false) => {
+  return useSWR(
     cityName.length
       ? `${baseUrl}/weather?q=${cityName}&appid=${apiKey}&units=metric`
       : null,
-    fetcher
+    fetcher,
+    {
+      revalidateOnMount,
+    }
   );
+};
 
-export const useWeatherWithGeoCoordinates = (coordinates) => {
-  const { latitude, longitude } = coordinates;
+export const useWeatherWithGeoCoordinates = (coordinates, permissionGrated) => {
   return useSWR(
-    (latitude && longitude)
-      ? `${baseUrl}/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
+    coordinates && permissionGrated
+      ? `${baseUrl}/weather?lat=${coordinates?.latitude}&lon=${coordinates?.longitude}&appid=${apiKey}&units=metric`
       : null,
-    fetcher
+    fetcher,
+    {
+      revalidateOnReconnect: true,
+      revalidateOnMount: true
+    }
   );
 };

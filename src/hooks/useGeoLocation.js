@@ -19,7 +19,7 @@ export const useGeoLocation = () => {
 
   const onError = (error) => {
     setLocation({
-      permissionGrated: true,
+      permissionGrated: false,
       error: error,
     });
   };
@@ -35,9 +35,10 @@ export const useGeoLocation = () => {
         },
       }));
     } else {
+
       navigator.geolocation.getCurrentPosition(onSuccess, onError, {
         enableHighAccuracy: true,
-        timeout: 5000,
+        timeout: 2000,
         maximumAge: 300000,
       });
     }

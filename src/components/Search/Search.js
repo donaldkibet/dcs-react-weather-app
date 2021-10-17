@@ -1,16 +1,14 @@
-import { useState } from "react";
-// import debounce from "lodash/debounce";
+import {  useState } from "react";
 import "./Search.css";
 import { useWeather } from "../../hooks/useWeather";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
 import EmptyState from "../EmptyState/EmptyState";
+import useDebounce from "../../hooks/useDebounce";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  // const handleSearch = debounce((searchTerm) => setSearchTerm(searchTerm), 300);
-  const handleSearch = (searchTerm) => setSearchTerm(searchTerm);
-
-  const { data } = useWeather(searchTerm);
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  const { data } = useWeather(debouncedSearchTerm, true);
 
   return (
     <div className="searchContainer">
@@ -20,9 +18,10 @@ const Search = () => {
       <input
         className="textInput"
         type="text"
-        onChange={(event) => handleSearch(event.target.value)}
+        onChange={(event) => setSearchTerm(event.target.value)}
         placeholder="Enter city name "
         role="search"
+        disabled={!navigator.onLine}
       />
       <div className="resultPanel">
         {data?.cod === "404" && (
