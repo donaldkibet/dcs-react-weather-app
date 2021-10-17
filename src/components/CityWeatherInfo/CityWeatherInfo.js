@@ -16,7 +16,7 @@ const CityWeatherInfo = () => {
   );
   const { data, error } = useWeather(cityName);
 
-  if(!data) return <EmptyState headerTitle={cityName} displayText={`${cityName} weather information`}/>
+  if(!data) return <EmptyState headerTitle={cityName} displayText={`${cityName} weather information not found`}/>
  
   return (
     <>
