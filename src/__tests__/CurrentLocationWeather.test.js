@@ -1,18 +1,26 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import CurrentLocationWeather from "../components/CurrentLocationWeather/CurrentLocationWeather";
-import {  useCurrentPosition } from 'react-use-geolocation';
-import { useWeatherWithGeoCoordinates } from '../hooks/useWeather';
+import { useWeatherWithGeoCoordinates } from "../hooks/useWeather";
 // eslint-disable-next-line jest/no-mocks-import
-import  { mockWeatherResponse } from '../__mocks__/weather.mock';
+import { mockWeatherResponse } from "../__mocks__/weather.mock";
+import { useGeoLocation } from "../hooks/useGeoLocation";
 
-jest.mock('react-use-geolocation');
-jest.mock('../hooks/useWeather')
+jest.mock("../hooks/useGeoLocation");
+jest.mock("../hooks/useWeather");
 describe("<CurrentLocationWeather/>", () => {
-
   it("should display current location weather information, when granted location permission", () => {
-    useCurrentPosition.mockReturnValue([{coords: {longitude: -1, latitudeL: 0}}])
-    useWeatherWithGeoCoordinates.mockReturnValue({data: mockWeatherResponse, error: null})
+    useGeoLocation.mockReturnValue(
+      {
+        permissionGrated: true,
+        coordinates: { latitude: "", longitude: "" },
+        error: null,
+      },
+    );
+    useWeatherWithGeoCoordinates.mockReturnValue({
+      data: mockWeatherResponse,
+      error: null,
+    });
     render(<CurrentLocationWeather />);
     expect(screen.getByText(/Today/i)).toBeInTheDocument();
     expect(screen.getByText(/26°/i)).toBeInTheDocument();
@@ -26,12 +34,17 @@ describe("<CurrentLocationWeather/>", () => {
     expect(screen.getByText(/broken clouds/i)).toBeInTheDocument();
   });
 
-
   it("should display loading spinner while loading weather information", () => {
-    useCurrentPosition.mockReturnValue([{coords: {longitude: -1, latitudeL: 0}}])
-    useWeatherWithGeoCoordinates.mockReturnValue({data: null, error: null})
+    useGeoLocation.mockReturnValue(
+      {
+        permissionGrated: true,
+        coordinates: { latitude: "", longitude: "" },
+        error: null,
+      },
+    );
+    useWeatherWithGeoCoordinates.mockReturnValue({ data: null, error: null });
     render(<CurrentLocationWeather />);
 
-    expect(screen.getByTitle(/loading spinner/)).toBeInTheDocument()
-  })
+    expect(screen.getByTitle(/loading spinner/)).toBeInTheDocument();
+  });
 });
