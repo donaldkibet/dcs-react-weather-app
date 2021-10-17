@@ -11,11 +11,14 @@ import Search from "./components/Search/Search";
 import AddCity from "./components/TopCities/AddCity";
 import { SWRConfig } from "swr";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import localStorageProvider from "./swr-cache/localStorageCache";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <SWRConfig>
+      <SWRConfig
+        value={{ provider: localStorageProvider, revalidateOnReconnect: true }}
+      >
         <Provider>
           <Route path="/" render={(props) => <NavBar {...props} />} />
           <Route exact path="/" render={(props) => <App {...props} />} />

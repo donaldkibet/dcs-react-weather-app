@@ -11,6 +11,12 @@ jobs:
     name: dcs-frontend-project
     runs-on: ubuntu-latest
     steps:
+      - name: environment variables
+        env:
+          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+          REACT_APP_WEATHER_ICON_BASE_URL: ${{ secrets.REACT_APP_FLAGS_BASE_URL }}
+          REACT_APP_FLAGS_BASE_URL: ${{ secrets.REACT_APP_WEATHER_ICON_BASE_URL }}
       - uses: actions/checkout@v2
       - uses: borales/actions-yarn@v2.3.0
         with:
@@ -27,22 +33,5 @@ jobs:
           name: build
           path: |
             build
-  
-  deploy_to_github_pages:
 
-    runs-on: ubuntu-latest
-
-    needs:  build
-    steps:
-      - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: install
-      - name: Install and Build 🔧 
-        run: |
-          npm run build
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.5
-        with:
-          branch: gh-pages 
-          folder: build
+            
