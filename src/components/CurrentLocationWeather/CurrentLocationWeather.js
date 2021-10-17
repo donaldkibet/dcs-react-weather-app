@@ -11,10 +11,10 @@ const CurrentLocationWeather = () => {
   return (
     <>
       {permissionGrated && (
-        <>
+        <div>
           {!data && !apiError && <AiOutlineLoading title="loading spinner" />}
           {data && <WeatherDetails data={data}  />}
-        </>
+        </div>
       )}
     </>
   );
