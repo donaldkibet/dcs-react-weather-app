@@ -17,7 +17,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <SWRConfig
-        value={{ provider: localStorageProvider, revalidateOnReconnect: true }}
+        value={{
+          provider: localStorageProvider,
+          revalidateOnReconnect: true,
+          revalidateOnMount: false
+        }}
       >
         <Provider>
           <Route path="/" render={(props) => <NavBar {...props} />} />

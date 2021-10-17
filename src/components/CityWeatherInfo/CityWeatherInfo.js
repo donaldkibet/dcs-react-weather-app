@@ -21,7 +21,7 @@ const CityWeatherInfo = () => {
   return (
     <>
       {data && !error && (
-        <div>
+        <div style={{position: 'relative'}}>
           <WeatherDetails data={data} displayAllDetails={true}/>
           <h3>Notes</h3>
           <Notes cityName={cityName} cityId={cityId} />
