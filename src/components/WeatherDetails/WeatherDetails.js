@@ -23,7 +23,7 @@ const WeatherDetails = ({ data, displayAllDetails }) => {
 
         <div>
           <img
-            src={`${flagBaseUrl}/${data.sys.country}/shiny/64.png`}
+            src={`${flagBaseUrl}/${data?.sys?.country}/shiny/64.png`}
             alt="alt logo"
           />
         </div>
@@ -32,7 +32,7 @@ const WeatherDetails = ({ data, displayAllDetails }) => {
       <div className={styles.iconWrapper}>
         <img
           alt="icon"
-          src={`${weatherIconBaseUrl}${data.weather[0].icon}@2x.png`}
+          src={`${weatherIconBaseUrl}${data?.weather[0]?.icon}@2x.png`}
         />
         <p className={styles.temp}>{Math.round(data.main.temp)}°</p>
         <p className={styles.description}>{data.weather[0].description}</p>
@@ -74,7 +74,7 @@ const WeatherDetails = ({ data, displayAllDetails }) => {
           </span>
           <span>
             <p className={styles.label01}>Wind</p>
-            <p className={styles.label02}>{data.wind.speed} km/h</p>
+            <p className={styles.label02}>{data.wind.speed} m/sec</p>
           </span>
         </div>
       </div>

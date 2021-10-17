@@ -8,7 +8,7 @@ import CityWeatherInfo from "./components/CityWeatherInfo/CityWeatherInfo";
 import App from "./App";
 import NavBar from "./components/NavBar/NavBar";
 import Search from "./components/Search/Search";
-import AddTopCity from "./components/TopCities/AddTopCity";
+import AddCity from "./components/TopCities/AddCity";
 import { SWRConfig } from "swr";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
@@ -27,7 +27,7 @@ ReactDOM.render(
           <Route
             exact
             path="/add-city"
-            render={(props) => <AddTopCity {...props} />}
+            render={(props) => <AddCity {...props} />}
           />
           <Route
             exact
@@ -40,7 +40,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-serviceWorkerRegistration.register();
+// serviceWorkerRegistration.register();
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

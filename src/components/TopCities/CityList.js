@@ -6,10 +6,11 @@ import EmptyState from "../EmptyState/EmptyState";
 
 const CityList = () => {
   const { cityList } = useWeatherStoreContext();
-
+  
   return (
-    <div>
+    <div >
       <p className={styles.cityListTitle}>Top 15 Cities around the world</p>
+      <div role="list">
       {!isEmpty(cityList) ? (
         sortBy(cityList, [(city) => city.name]).map((city) => (
           <CityListItem key={city.id} city={city} />
@@ -17,6 +18,7 @@ const CityList = () => {
       ) : (
         <EmptyState headerTitle="Top Cities" displayText="city" />
       )}
+      </div>
     </div>
   );
 };

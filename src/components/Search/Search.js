@@ -1,5 +1,5 @@
 import { useState } from "react";
-import  debounce  from "lodash/debounce";
+import debounce from "lodash/debounce";
 import "./Search.css";
 import { useWeather } from "../../hooks/useWeather";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
@@ -7,7 +7,8 @@ import EmptyState from "../EmptyState/EmptyState";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const handleSearch = debounce((searchTerm) => setSearchTerm(searchTerm), 300);
+  // const handleSearch = debounce((searchTerm) => setSearchTerm(searchTerm), 300);
+  const handleSearch = (searchTerm) => setSearchTerm(searchTerm);
 
   const { data, error } = useWeather(searchTerm);
 
@@ -24,13 +25,16 @@ const Search = () => {
         role="search"
       />
       <div className="resultPanel">
-        {error && (
+        {data?.cod === "404" && (
           <EmptyState
             headerTitle={`${searchTerm} City not found`}
             displayText={`${searchTerm} weather information`}
           />
         )}
-        {data && <WeatherDetails data={data} displayAllDetails={true} />}
+
+        {data?.cod === 200 && (
+          <WeatherDetails data={data} displayAllDetails={true} />
+        )}
       </div>
     </div>
   );

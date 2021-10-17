@@ -9,7 +9,7 @@ const CityListItem = ({ city }) => {
   const history = useHistory();
   const { removeCity } = useWeatherStoreContext();
   const { data, error } = useWeather(city.name);
-  
+
   const handleDelete = (event) => {
     event.stopPropagation();
     removeCity(city.id);
@@ -28,16 +28,16 @@ const CityListItem = ({ city }) => {
 
   if (error)
     return (
-      <div className={styles.listItem} onClick={displayMoreDetails}>
+      <div title={city.name} className={styles.listItem} onClick={displayMoreDetails}>
         <h4>{`${city.name} not found`}</h4>
         <AiFillDelete color="grey" size={25} onClick={handleDelete} />
       </div>
     );
 
   return (
-    <div className={styles.listItem} onClick={displayMoreDetails}>
+    <div role="listitem" className={styles.listItem} onClick={displayMoreDetails}>
       {data && <WeatherInfo currentWeather={data} />}
-      <AiFillDelete color="grey" size={25} onClick={handleDelete} />
+      <AiFillDelete data-testid={city.name} color="grey" size={25} onClick={handleDelete} />
     </div>
   );
 };

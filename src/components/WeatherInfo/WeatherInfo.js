@@ -11,9 +11,9 @@ const WeatherInfo = ({ currentWeather }) => {
     <div className={styles.weatherInfoWrapper}>
       <span className={styles.temp}>{Math.round(main.temp)}°</span>
       <div className={styles.tile}>
-        <span className={styles.iconWrapper}>
+        <label className={styles.iconWrapper}>
           <FiMapPin /> <span className={styles.label02}>{name}</span>
-        </span>
+        </label>
         <p className={styles.label01}>
           {dayjs(dt * 1000)
               .utcOffset(timezone / 60)

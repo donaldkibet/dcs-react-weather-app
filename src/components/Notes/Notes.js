@@ -6,7 +6,8 @@ import { isEmpty } from "lodash";
 import { useWeatherStoreContext } from "../../store/Store";
 
 const Notes = ({ cityId }) => {
-  const { noteList, AddNote, updateNote, deleteNote } = useWeatherStoreContext();
+  const { noteList, AddNote, updateNote, deleteNote } =
+    useWeatherStoreContext();
   const [newNote, setNewNote] = useState("");
   const [mode, setMode] = useState({ inEditMode: false, noteId: null });
   const [required, setRequired] = useState(false);
@@ -18,15 +19,15 @@ const Notes = ({ cityId }) => {
 
   const clearTextArea = () => {
     setNewNote("");
-    setRequired(false)
-  }
+    setRequired(false);
+  };
 
   const handleSave = () => {
     if (newNote.length) {
       AddNote(newNote, cityId);
       clearTextArea();
     } else {
-      setRequired(true)
+      setRequired(true);
     }
   };
 
@@ -76,12 +77,14 @@ const Notes = ({ cityId }) => {
               <p>{note.noteText}</p>
               <div>
                 <AiFillEdit
+                  title="Edit"
                   className={styles.icon}
                   size={25}
                   color="orange"
                   onClick={() => handleEdit(note)}
                 />
                 <AiFillDelete
+                  title="Delete"
                   className={styles.icon}
                   size={25}
                   color="red"

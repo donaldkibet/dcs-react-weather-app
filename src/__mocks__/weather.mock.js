@@ -1,0 +1,30 @@
+export const mockWeatherResponse = {
+  coord: { lon: 36.8155, lat: -1.2841 },
+  weather: [
+    { id: 803, main: "Clouds", description: "broken clouds", icon: "04n" },
+  ],
+  base: "stations",
+  main: {
+    temp: 25.81,
+    feels_like: 20.41,
+    temp_min: 18.87,
+    temp_max: 20.93,
+    pressure: 1020,
+    humidity: 56,
+  },
+  visibility: 10000,
+  wind: { speed: 6.17, deg: 80 },
+  clouds: { all: 75 },
+  dt: 1634417587,
+  sys: {
+    type: 1,
+    id: 2558,
+    country: "KE",
+    sunrise: 1634354037,
+    sunset: 1634397738,
+  },
+  timezone: 10800,
+  id: 184745,
+  name: "Nairobi",
+  cod: 200,
+};

@@ -4,20 +4,20 @@ import { useWeatherWithGeoCoordinates } from "../../hooks/useWeather";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
 import { AiOutlineLoading } from "react-icons/ai";
 
-const GeoLocation = () => {
+const CurrentLocationWeather = () => {
   const [position] = useCurrentPosition();
   const { data, error } = useWeatherWithGeoCoordinates(position);
-  
+
   return (
     <>
       {position && (
         <>
-          {!data && !error && <AiOutlineLoading />}
-          {data && <WeatherDetails data={data} />}
+          {!data && !error && <AiOutlineLoading title="loading spinner" />}
+          {data && <WeatherDetails data={data}  />}
         </>
       )}
     </>
   );
 };
 
-export default GeoLocation;
+export default CurrentLocationWeather;

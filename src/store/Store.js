@@ -47,7 +47,7 @@ export const Provider = (props) => {
           ? Math.max(...cityList.map((city) => city.id)) + 1
           : 0;
       setCityList([...cityList, { id: nextId, name: cityName }]);
-    }
+    } else { return { message: 'City already exists'}}
   };
 
   /**
