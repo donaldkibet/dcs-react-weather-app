@@ -106,7 +106,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ url }) => url.origin === "https://api.openweathermap.org",
+  ({ url }) => url.origin === new URL(process.env.REACT_APP_BASE_URL).origin,
   new StaleWhileRevalidate({
     cacheName: "weather-api-cache",
     plugins: [

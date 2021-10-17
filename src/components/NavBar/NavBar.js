@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <nav className={styles.navBarWrapper}>
       <Link className={styles.link} to="/">
-        <AiFillHome size={15} /> Home
+        <AiFillHome size={25} /> Home
       </Link>
       <div className={styles.rightLinks}>
         <Link className={styles.link} to="/add-city">

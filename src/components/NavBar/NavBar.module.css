@@ -1,7 +1,9 @@
 .navBarWrapper {
     display: flex;
     justify-content: space-between;
-    margin: 0.625rem;
+    margin: 0.625rem 0;
+    background-color: var(--grey-10);
+    padding: 0.625rem;
 }
 
 .link {

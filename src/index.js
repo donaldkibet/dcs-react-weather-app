@@ -19,8 +19,7 @@ ReactDOM.render(
       <SWRConfig
         value={{
           provider: localStorageProvider,
-          revalidateOnReconnect: true,
-          revalidateOnMount: false
+          revalidateOnReconnect: true
         }}
       >
         <Provider>
