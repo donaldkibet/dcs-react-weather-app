@@ -1,5 +1,5 @@
 import {  useState } from "react";
-import "./Search.css";
+import styles from "./Search.module.css";
 import { useWeather } from "../../hooks/useWeather";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
 import EmptyState from "../EmptyState/EmptyState";
@@ -11,7 +11,7 @@ const Search = () => {
   const { data } = useWeather(debouncedSearchTerm, true);
 
   return (
-    <div className="searchContainer">
+    <div className={styles.searchContainer}>
       <label className="label" htmlFor="searchInput">
         Search for city
       </label>
@@ -23,7 +23,7 @@ const Search = () => {
         role="search"
         disabled={!navigator.onLine}
       />
-      <div className="resultPanel">
+      <div className={styles.resultPanel}>
         {data?.cod === "404" && (
           <EmptyState
             headerTitle={`${searchTerm} City not found`}

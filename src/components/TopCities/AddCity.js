@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { useWeatherStoreContext } from "../../store/Store";
-import styles from "./AddTopCity.module.css";
+import styles from "./AddCity.module.css";
 
 const AddCity = () => {
   const history = useHistory();

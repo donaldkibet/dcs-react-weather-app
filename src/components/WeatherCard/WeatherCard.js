@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import { FiMapPin } from "react-icons/fi";
-import styles from "./WeatherInfo.module.css";
+import styles from "./WeatherCard.module.css";
 
 const utc = require("dayjs/plugin/utc");
 dayjs.extend(utc);
 
-const WeatherInfo = ({ currentWeather }) => {
+const WeatherCard = ({ currentWeather }) => {
   const { main, name, dt, timezone } = currentWeather;
   return (
     <div className={styles.weatherInfoWrapper}>
@@ -24,4 +24,4 @@ const WeatherInfo = ({ currentWeather }) => {
   );
 };
 
-export default WeatherInfo;
+export default WeatherCard;
