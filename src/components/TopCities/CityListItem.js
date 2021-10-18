@@ -21,7 +21,7 @@ const CityListItem = ({ city }) => {
   if (!data && !error) {
     return (
       <div className={styles.listItem} onClick={displayMoreDetails}>
-        <AiOutlineLoading />
+        <AiOutlineLoading size={20} /> loading ...
       </div>
     );
   }

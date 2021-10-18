@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 export const useGeoLocation = () => {
   const [location, setLocation] = useState({
     permissionGrated: false,
-    coordinates: { latitude: "", longitude: "" },
+    coordinates: { latitude: undefined, longitude: undefined },
     error: null,
   });
 
@@ -15,6 +15,11 @@ export const useGeoLocation = () => {
         longitude: location.coords.longitude,
       },
     });
+    const newCoords = JSON.stringify({
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    });
+    localStorage.setItem("coords", newCoords);
   };
 
   const onError = (error) => {
@@ -25,21 +30,27 @@ export const useGeoLocation = () => {
   };
 
   useEffect(() => {
-    if (!("geolocation" in navigator)) {
-      setLocation((prevState) => ({
-        ...prevState,
-        permissionGrated: false,
-        error: {
-          code: 500,
-          message: "Geo location not supported",
+    navigator.permissions.query({ name: "geolocation" }).then((result) => {
+      result.state === "granted" &&
+        setLocation((prevState) => {
+          return { ...prevState, permissionGrated: true };
+        });
+    });
+    const cachedCoords = localStorage.getItem("coords");
+    if (cachedCoords) {
+      const { latitude, longitude } = JSON.parse(cachedCoords);
+      setLocation({
+        permissionGrated: true,
+        coordinates: {
+          latitude: latitude,
+          longitude: longitude,
         },
-      }));
+      });
     } else {
-
       navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-        enableHighAccuracy: true,
-        timeout: 2000,
-        maximumAge: 300000,
+        enableHighAccuracy: false,
+        timeout: 10000,
+        maximumAge: 18000000,
       });
     }
   }, []);

@@ -10,6 +10,7 @@ export const useWeather = (cityName, revalidateOnMount = false) => {
       ? `${baseUrl}/weather?q=${cityName}&appid=${apiKey}&units=metric`
       : null,
     fetcher,
+
     {
       revalidateOnMount,
     }
@@ -18,13 +19,12 @@ export const useWeather = (cityName, revalidateOnMount = false) => {
 
 export const useWeatherWithGeoCoordinates = (coordinates, permissionGrated) => {
   return useSWR(
-    coordinates && permissionGrated
+    coordinates !== undefined && permissionGrated
       ? `${baseUrl}/weather?lat=${coordinates?.latitude}&lon=${coordinates?.longitude}&appid=${apiKey}&units=metric`
       : null,
     fetcher,
     {
       revalidateOnReconnect: true,
-      revalidateOnMount: true
     }
   );
 };
