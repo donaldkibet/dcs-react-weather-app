@@ -5,13 +5,12 @@
 [See it live ](https://dcs-weather-app-ochih5uj5-dkibetwork-gmailcom.vercel.app)
 
 ![Desktop View](https://raw.githubusercontent.com/donaldkibet/dcs-react-weather-app/master/docs/desktop-view.png)
-![Mobile View](https://raw.githubusercontent.com/donaldkibet/dcs-react-weather-app/master/docs/mobile-view.png)
 
 A simple weather application that has the following capabilities
 
 -   Request user for location permission and display user location weather information
 -   Display weather conditions for top 15 Cities around the world 
--   Ability to customized list of cities to view their current weather locations
+-   Ability to customized list of cities as `favorites` to view their current weather locations
 -   Ability to search and view detailed city weather information
 -   Ability to add, edit and remove notes for a specific city 
 -   Work Offline, 
@@ -32,13 +31,16 @@ A simple weather application that has the following capabilities
     REACT_APP_FLAGS_BASE_URL=https://www.countryflags.io
     ```
 
--   Install dependencies
+-   Install dependencies, run
+    ```bash
+        yarn or npm install
+    ```
 -   Run the project by running 
 
     ```bash
         yarn start or npm start
     ```
--   The Project should be running on [http://localhost:3000](http://localhost:3000)
+-   The project should be running on [http://localhost:3000](http://localhost:3000)
 
 -   Verify tests 
     ```bash 
@@ -46,5 +48,8 @@ A simple weather application that has the following capabilities
     ```
 
 
+## User guide
 
+Detailed user guide found 
+    [user-guide](https://github.com/donaldkibet/dcs-react-weather-app/blob/master/docs/USERGUIDE.md)
 
