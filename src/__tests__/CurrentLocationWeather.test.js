@@ -22,7 +22,6 @@ describe("<CurrentLocationWeather/>", () => {
       error: null,
     });
     render(<CurrentLocationWeather />);
-    expect(screen.getByText(/Today/i)).toBeInTheDocument();
     expect(screen.getByText(/26°/i)).toBeInTheDocument();
     expect(screen.getByText(/Pressure/i)).toBeInTheDocument();
     expect(screen.getByText(/1020/i)).toBeInTheDocument();

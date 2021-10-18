@@ -13,6 +13,8 @@ export const useWeather = (cityName, revalidateOnMount = false) => {
 
     {
       revalidateOnMount,
+      refreshInterval: 0,
+      revalidateOnReconnect: true,
     }
   );
 };
