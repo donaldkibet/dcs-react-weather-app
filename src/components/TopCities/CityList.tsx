@@ -1,10 +1,11 @@
+import React from 'react';
 import { useWeatherStoreContext } from "../../store/Store";
 import { isEmpty, sortBy } from "lodash";
 import CityListItem from "./CityListItem";
 import styles from "./CityList.module.css";
 import EmptyState from "../EmptyState/EmptyState";
 
-const CityList = () => {
+const CityList: React.FC = () => {
   const { cityList } = useWeatherStoreContext();
   
   return (

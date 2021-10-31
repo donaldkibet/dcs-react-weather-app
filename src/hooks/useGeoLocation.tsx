@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 
+interface GeoLocation {
+  permissionGrated: boolean;
+  coordinates?: {
+    latitude: string| number;
+    longitude: string | number
+  }
+  error?: Error
+}
+
 export const useGeoLocation = () => {
-  const [location, setLocation] = useState({
+  const [location, setLocation] = useState<GeoLocation>({
     permissionGrated: false,
     coordinates: { latitude: undefined, longitude: undefined },
     error: null,

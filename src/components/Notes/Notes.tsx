@@ -5,7 +5,12 @@ import styles from "./Note.module.css";
 import { isEmpty } from "lodash";
 import { useWeatherStoreContext } from "../../store/Store";
 
-const Notes = ({ cityId }) => {
+interface NotesProps {
+  cityId: number;
+  cityName?: string
+}
+
+const Notes: React.FC<NotesProps> = ({ cityId }) => {
   const { noteList, AddNote, updateNote, deleteNote } =
     useWeatherStoreContext();
   const [newNote, setNewNote] = useState("");
@@ -52,7 +57,6 @@ const Notes = ({ cityId }) => {
       <textarea
         className="textInput"
         rows={3}
-        type="text"
         value={newNote}
         onChange={(event) => setNewNote(event.target.value)}
         placeholder="Enter Note"

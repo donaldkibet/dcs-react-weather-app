@@ -6,7 +6,7 @@ import React, { useMemo } from "react";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
 import EmptyState from "../EmptyState/EmptyState";
 
-const CityWeatherInfo = () => {
+const CityWeatherInfo: React.FC = () => {
   const { cityName } = useParams();
   const { cityList } = useWeatherStoreContext();
 

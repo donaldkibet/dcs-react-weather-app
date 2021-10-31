@@ -1,11 +1,11 @@
-import {  useState } from "react";
+import React, {  useState } from "react";
 import styles from "./Search.module.css";
 import { useWeather } from "../../hooks/useWeather";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
 import EmptyState from "../EmptyState/EmptyState";
 import useDebounce from "../../hooks/useDebounce";
 
-const Search = () => {
+const Search: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const { data } = useWeather(debouncedSearchTerm, true);
