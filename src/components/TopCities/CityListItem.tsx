@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { useHistory } from "react-router";
 import { useWeatherStoreContext } from "../../store/Store";
 import { useWeather } from "../../hooks/useWeather";
@@ -16,7 +16,7 @@ const CityListItem:React.FC<CityListItemProps> = ({ city }) => {
   const { removeCity } = useWeatherStoreContext();
   const { data, error } = useWeather(city.name, navigator.onLine);
 
-  const handleDelete = (event) => {
+  const handleDelete = (event: MouseEvent) => {
     event.stopPropagation();
     removeCity(city.id);
   };

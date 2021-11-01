@@ -4,8 +4,11 @@ import { useWeather } from "../../hooks/useWeather";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
 import EmptyState from "../EmptyState/EmptyState";
 import useDebounce from "../../hooks/useDebounce";
+import { RouteComponentProps } from "react-router-dom";
 
-const Search: React.FC = () => {
+interface SearchProps  extends RouteComponentProps{}
+
+const Search: React.FC<SearchProps> = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const { data } = useWeather(debouncedSearchTerm, true);

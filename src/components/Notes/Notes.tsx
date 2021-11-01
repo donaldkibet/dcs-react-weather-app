@@ -7,14 +7,19 @@ import { useWeatherStoreContext } from "../../store/Store";
 
 interface NotesProps {
   cityId: number;
-  cityName?: string
+  cityName?: string;
+}
+
+interface Mode {
+  inEditMode: boolean;
+  noteId: string | null;
 }
 
 const Notes: React.FC<NotesProps> = ({ cityId }) => {
   const { noteList, AddNote, updateNote, deleteNote } =
     useWeatherStoreContext();
   const [newNote, setNewNote] = useState("");
-  const [mode, setMode] = useState({ inEditMode: false, noteId: null });
+  const [mode, setMode] = useState<Mode>({ inEditMode: false, noteId: null });
   const [required, setRequired] = useState(false);
 
   const currentListNote = useMemo(
@@ -36,7 +41,8 @@ const Notes: React.FC<NotesProps> = ({ cityId }) => {
     }
   };
 
-  const handleEdit = ({ id, noteText }) => {
+  const handleEdit = (note: { id: string; noteText: string }): void => {
+    const { id, noteText } = note;
     setMode({ inEditMode: true, noteId: id });
     setNewNote(noteText);
   };
@@ -47,7 +53,7 @@ const Notes: React.FC<NotesProps> = ({ cityId }) => {
     clearTextArea();
   };
 
-  const handleDelete = (noteId) => deleteNote(noteId, cityId);
+  const handleDelete = (noteId: string) => deleteNote(noteId, cityId);
 
   return (
     <div className={styles.noteWrapper}>
@@ -76,7 +82,7 @@ const Notes: React.FC<NotesProps> = ({ cityId }) => {
       <hr />
       {!isEmpty(currentListNote) ? (
         <ul className={styles.listWrapper}>
-          {currentListNote.map((note) => (
+          {currentListNote?.map((note) => (
             <li key={note.id} className={styles.listItem}>
               <p>{note.noteText}</p>
               <div>

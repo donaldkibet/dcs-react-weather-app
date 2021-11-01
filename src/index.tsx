@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import reportWebVitals from "./reportWebVitals";
 import { Provider } from "./store/Store";
 import { BrowserRouter, Route } from "react-router-dom";
 import CityWeatherInfo from "./components/CityWeatherInfo/CityWeatherInfo";
@@ -10,7 +9,6 @@ import NavBar from "./components/NavBar/NavBar";
 import Search from "./components/Search/Search";
 import AddCity from "./components/TopCities/AddCity";
 import { SWRConfig } from "swr";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import localStorageProvider from "./swr-cache/localStorageCache";
 
 ReactDOM.render(
@@ -46,8 +44,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-serviceWorkerRegistration.register();
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

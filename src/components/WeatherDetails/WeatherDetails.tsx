@@ -14,16 +14,17 @@ interface WeatherDetailsProps {
   displayAllDetails?: boolean;
 }
 
-const WeatherDetails: React.FC<WeatherDetailsProps> = ({ data, displayAllDetails = false }) => {
+const WeatherDetails: React.FC<WeatherDetailsProps> = ({
+  data,
+  displayAllDetails = false,
+}) => {
   return (
     <div className={styles.weatherDetailsWrapper}>
       <div className={styles.headerSection}>
         <div>
           <p className={styles.title}>{data?.name}</p>
           <p className={styles.date}>
-            {dayjs(data.dt * 1000)
-              .utcOffset(data.timezone / 60)
-              .format("dddd, h:mm A")}
+            {dayjs(data.dt * 1000).format("dddd, h:mm A")}
           </p>
         </div>
 

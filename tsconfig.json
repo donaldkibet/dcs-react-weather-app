@@ -3,7 +3,7 @@
     "esModuleInterop": true,
     "module": "esnext",
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
@@ -17,7 +17,15 @@
       "es2018",
       "es2020"
     ],
-    "noEmit": true
+    "noEmit": true,
+    "target": "es5",
+    "allowJs": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }

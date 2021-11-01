@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { RouteComponentProps, useHistory } from "react-router";
 import { useWeatherStoreContext } from "../../store/Store";
 import styles from "./AddCity.module.css";
 
-const AddCity: React.FC = () => {
+interface SearAddCitychProps  extends RouteComponentProps{}
+
+const AddCity: React.FC<SearAddCitychProps> = () => {
   const history = useHistory();
   const { addCity } = useWeatherStoreContext();
   const [newCity, setNewCity] = useState("");

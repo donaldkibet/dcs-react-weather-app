@@ -1,10 +1,14 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { GiModernCity } from 'react-icons/gi';
 
-const NavBar: React.FC = () => {
+interface NavBarProps extends RouteComponentProps {
+  
+}
+
+const NavBar: React.FC<NavBarProps> = () => {
   return (
     <nav className={styles.navBarWrapper}>
       <Link className={styles.link} to="/">
