@@ -2,8 +2,8 @@ import React from "react";
 import dayjs from "dayjs";
 import styles from "./WeatherDetails.module.css";
 import { WeatherData } from "../../types";
+import utc from "dayjs/plugin/utc";
 
-const utc = require("dayjs/plugin/utc");
 dayjs.extend(utc);
 
 const weatherIconBaseUrl = process.env.REACT_APP_WEATHER_ICON_BASE_URL;
@@ -24,7 +24,9 @@ const WeatherDetails: React.FC<WeatherDetailsProps> = ({
         <div>
           <p className={styles.title}>{data?.name}</p>
           <p className={styles.date}>
-            {dayjs(data.dt * 1000).format("dddd, h:mm A")}
+            {dayjs(data.dt * 1000)
+              .utcOffset(data.timezone / 60)
+              .format("dddd, h:mm A")}
           </p>
         </div>
 
