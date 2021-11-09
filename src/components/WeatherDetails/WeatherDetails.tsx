@@ -1,14 +1,23 @@
 import React from "react";
 import dayjs from "dayjs";
 import styles from "./WeatherDetails.module.css";
+import { WeatherData } from "../../types";
+import utc from "dayjs/plugin/utc";
 
-const utc = require("dayjs/plugin/utc");
 dayjs.extend(utc);
 
 const weatherIconBaseUrl = process.env.REACT_APP_WEATHER_ICON_BASE_URL;
 const flagBaseUrl = process.env.REACT_APP_FLAGS_BASE_URL;
 
-const WeatherDetails = ({ data, displayAllDetails }) => {
+interface WeatherDetailsProps {
+  data: WeatherData;
+  displayAllDetails?: boolean;
+}
+
+const WeatherDetails: React.FC<WeatherDetailsProps> = ({
+  data,
+  displayAllDetails = false,
+}) => {
   return (
     <div className={styles.weatherDetailsWrapper}>
       <div className={styles.headerSection}>

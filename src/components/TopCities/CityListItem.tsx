@@ -1,16 +1,22 @@
+import React, { MouseEvent } from 'react';
 import { useHistory } from "react-router";
 import { useWeatherStoreContext } from "../../store/Store";
 import { useWeather } from "../../hooks/useWeather";
 import { AiFillDelete, AiOutlineLoading } from "react-icons/ai";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import styles from "./CityListItem.module.css";
+import { City } from '../../types';
 
-const CityListItem = ({ city }) => {
+interface CityListItemProps {
+  city: City
+}
+
+const CityListItem:React.FC<CityListItemProps> = ({ city }) => {
   const history = useHistory();
   const { removeCity } = useWeatherStoreContext();
   const { data, error } = useWeather(city.name, navigator.onLine);
 
-  const handleDelete = (event) => {
+  const handleDelete = (event: MouseEvent) => {
     event.stopPropagation();
     removeCity(city.id);
   };

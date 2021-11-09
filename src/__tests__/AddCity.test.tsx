@@ -7,7 +7,7 @@ import userEvent from "@testing-library/user-event";
 const mockHistory = jest.fn();
 
 jest.mock("react-router", () => ({
-  ...jest.requireActual("react-router-dom"),
+  ...jest.requireActual("react-router-dom") as any,
   useHistory: () => ({
     push:mockHistory
   }),

@@ -1,7 +1,13 @@
+import React from 'react';
 import { EmptyDataIllustration } from "./EmptyDataIllustration";
 import styles from "./EmptyState.module.css";
 
-const EmptyState = ({ headerTitle, displayText }) => {
+interface EmptyStateProps {
+  headerTitle: string;
+  displayText: string;
+}
+
+const EmptyState: React.FC<EmptyStateProps> = ({ headerTitle, displayText }) => {
   return (
     <div className={styles.emptyStateWrapper}>
       <h2 className={styles.headerTitle}>{headerTitle}</h2>

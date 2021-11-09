@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
+import { GeoLocation } from "../types";
 
 export const useGeoLocation = () => {
-  const [location, setLocation] = useState({
+  const [location, setLocation] = useState<GeoLocation>({
     permissionGrated: false,
-    coordinates: { latitude: undefined, longitude: undefined },
+    coordinates: { latitude: null, longitude: null },
     error: null,
   });
 
-  const onSuccess = (location) => {
+  const onSuccess = (location: GeolocationPosition) => {
     setLocation({
       permissionGrated: true,
       coordinates: {
@@ -22,7 +23,7 @@ export const useGeoLocation = () => {
     localStorage.setItem("coords", newCoords);
   };
 
-  const onError = (error) => {
+  const onError = (error: GeolocationPositionError) => {
     setLocation({
       permissionGrated: false,
       error: error,

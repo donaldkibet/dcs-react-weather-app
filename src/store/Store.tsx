@@ -1,5 +1,6 @@
 import React, { useContext, createContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { City, Note } from "../types";
 
 /**
  * This default list of top 15 cities by population has been adapted from
@@ -23,12 +24,34 @@ const defaultList = [
   { id: 14, name: "Buenos Aires" },
 ];
 
-const WeatherApp = createContext(null);
+interface WeatherAppContextShape {
+  cityList: Array<City>;
+  addCity: Function;
+  removeCity: Function;
+  AddNote: Function;
+  updateNote: Function;
+  deleteNote: Function;
+  noteList: Array<Note>;
+  setNoteList: Function;
+}
 
-export const useWeatherStoreContext = () => useContext(WeatherApp);
+const initialState: WeatherAppContextShape = {
+  cityList: [],
+  addCity: () => {},
+  removeCity: () => {},
+  AddNote: () => {},
+  updateNote: () => {},
+  deleteNote: () => {},
+  noteList: [],
+  setNoteList: () => {},
+};
 
-export const Provider = (props) => {
-  const { children } = props;
+const WeatherApp = createContext<WeatherAppContextShape>(initialState);
+
+export const useWeatherStoreContext = () =>
+  useContext<WeatherAppContextShape>(WeatherApp);
+
+export const Provider: React.FC = ({ children }) => {
   const [cityList, setCityList] = useLocalStorage("cityList", defaultList);
   const [noteList, setNoteList] = useLocalStorage("notes", []);
 
@@ -36,18 +59,20 @@ export const Provider = (props) => {
    * Add city to the list
    * @param {string} cityName Name of the city to add to the list of favorite cities
    */
-  const addCity = (cityName) => {
+  const addCity = (cityName: string) => {
     if (
       !cityList.find(
-        (city) => cityName.toLowerCase() === city.name.toLowerCase()
+        (city: City) => cityName.toLowerCase() === city.name.toLowerCase()
       )
     ) {
       const nextId =
         cityList.length > 0
-          ? Math.max(...cityList.map((city) => city.id)) + 1
+          ? Math.max(...cityList.map((city: City) => city.id)) + 1
           : 0;
       setCityList([...cityList, { id: nextId, name: cityName }]);
-    } else { return { message: 'City already exists'}}
+    } else {
+      return { message: "City already exists" };
+    }
   };
 
   /**
@@ -55,9 +80,9 @@ export const Provider = (props) => {
    * @param {number} id City Id to be removed
    * @returns void
    */
-  const removeCity = (id) => {
-    setCityList(cityList.filter((city) => city.id !== id));
-    setNoteList([...noteList.filter((note) => note.cityId !== id)]);
+  const removeCity = (id: number) => {
+    setCityList(cityList.filter((city: City) => city.id !== id));
+    setNoteList([...noteList.filter((note: Note) => note.cityId !== id)]);
   };
 
   /**
@@ -66,20 +91,22 @@ export const Provider = (props) => {
    * @param {number} cityId City id associated with the note
    */
 
-  const AddNote = (newNote, cityId) => {
+  const AddNote = (newNote: string, cityId: number) => {
     if (newNote.length) {
-      const existingCityNote = noteList.find((note) => note.cityId === cityId);
+      const existingCityNote = noteList.find(
+        (note: Note) => note.cityId === cityId
+      );
       if (existingCityNote) {
         const nextId =
           existingCityNote.note.length > 0
-            ? Math.max(...existingCityNote.note.map((note) => note.id)) + 1
+            ? Math.max(...existingCityNote.note.map((note: any) => note.id)) + 1
             : 0;
 
         const noteToAdd = [
           ...existingCityNote.note,
           { id: nextId, noteText: newNote },
         ];
-        const index = noteList.findIndex((note) => note.cityId === cityId);
+        const index = noteList.findIndex((note: Note) => note.cityId === cityId);
         noteList[index].note = noteToAdd;
         setNoteList([...noteList]);
       } else {
@@ -98,9 +125,11 @@ export const Provider = (props) => {
    * @param {number} cityId City id associated with the node
    * @param {string} noteId Note id to be updated, uses this node id to update the note
    */
-  const updateNote = (updatedNote, cityId, noteId) => {
-    const index = noteList.findIndex((note) => note.cityId === cityId);
-    let noteToUpdate = noteList[index].note.find((item) => item.id === noteId);
+  const updateNote = (updatedNote: string, cityId: number, noteId: number) => {
+    const index = noteList.findIndex((note: Note) => note.cityId === cityId);
+    let noteToUpdate = noteList[index].note.find(
+      (item: any) => item.id === noteId
+    );
     noteToUpdate.noteText = updatedNote;
   };
 
@@ -109,11 +138,11 @@ export const Provider = (props) => {
    * @param {number} noteId The id of the node to be deleted
    * @param {number} cityId City id associated with the note
    */
-  const deleteNote = (noteId, cityId) => {
-    const index = noteList.findIndex((note) => note.cityId === cityId);
+  const deleteNote = (noteId: number, cityId: number) => {
+    const index = noteList.findIndex((note: Note) => note.cityId === cityId);
     const updatedNoteList = noteList[index].note.filter(
       ({ id }) => id !== noteId
-    );
+    ) as Array<Note>
     noteList[index].note = updatedNoteList;
     setNoteList([...noteList]);
   };
